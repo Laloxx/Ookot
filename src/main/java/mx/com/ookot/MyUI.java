@@ -25,8 +25,9 @@ public class MyUI extends UI {
     protected void init(final VaadinRequest request)
     {
         setSizeFull();
-        getPage().setTitle("Ookot");
+        getPage().setTitle("Ookot 1.0");
         navigator = new DiscoveryNavigator(this, this);
+        
         
     }
 }
