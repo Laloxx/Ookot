@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "cat_instructores")
@@ -61,6 +63,8 @@ public class OpPagos implements java.io.Serializable {
 	/**
 	 * @return the cliente
 	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "IdCliente", nullable = false)
 	public ClClientes getCliente() {
 		return cliente;
 	}
@@ -73,6 +77,7 @@ public class OpPagos implements java.io.Serializable {
 	/**
 	 * @return the importe
 	 */
+	@Column(name = "Importe", nullable = false, scale = 4)
 	public BigDecimal getImporte() {
 		return importe;
 	}
@@ -85,6 +90,8 @@ public class OpPagos implements java.io.Serializable {
 	/**
 	 * @return the status
 	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "IdStatus", nullable = false)
 	public Status getStatus() {
 		return status;
 	}
@@ -97,6 +104,8 @@ public class OpPagos implements java.io.Serializable {
 	/**
 	 * @return the fechaPago
 	 */
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "FechaPago", nullable = false, length = 19)
 	public Date getFechaPago() {
 		return fechaPago;
 	}
@@ -109,6 +118,8 @@ public class OpPagos implements java.io.Serializable {
 	/**
 	 * @return the fechaVencimiento
 	 */
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "FechaVencimiento", nullable = false, length = 19)
 	public Date getFechaVencimiento() {
 		return fechaVencimiento;
 	}
@@ -121,6 +132,8 @@ public class OpPagos implements java.io.Serializable {
 	/**
 	 * @return the clases
 	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "IdClases", nullable = false)
 	public OpClases getClases() {
 		return clases;
 	}
